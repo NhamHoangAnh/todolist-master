@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { Col, Row, FormGroup, Label, Input, Button, TabPane } from 'reactstrap'
-
-export default class signup extends Component {
+import {Link, withRouter} from 'react-router-dom';
+ class signup extends Component {
+    onClick=()=>{
+     let path = "/"; 
+     console.log(path)
+      this.props.history.push(path)
+      }
     render() {
         return (
             <TabPane tabId="2">
@@ -41,11 +46,16 @@ export default class signup extends Component {
                         </FormGroup>
                     </Col>
                 </Row>
-                
-                <Button style={{ marginTop: "10px" }} color="primary">Sign up</Button>
+                <Button onClick={this.onClick} style={{ marginTop: "10px" }} color="primary">Sign up</Button>
+                <Row form>
+                    <p>or you have an account?
+                    <Link to="/signinform">Click here</Link>
+                    </p>
+                </Row>
             </TabPane>
 
 
         )
     }
 }
+export default withRouter(signup)

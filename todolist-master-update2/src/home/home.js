@@ -6,7 +6,7 @@ export default class home extends Component {
   render() {
     return (
       <div>
-        <Header/>
+        <Header signined ={this.props.signined}/>
         <Body/>
       </div>
     )

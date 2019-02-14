@@ -4,7 +4,7 @@ export default class homepage extends Component {
   render() {
     return (
       <div>
-        <Home/>
+        <Home signined={this.props.signined}/>
       </div>
     )
   }
