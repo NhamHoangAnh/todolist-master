@@ -8,7 +8,7 @@ class signup extends Component {
         this.state ={
             isRegistering: false,
             name:"",
-            email:"",
+            number:"",
             password:"",
             passwordRewrite:"",
             data:[],
@@ -37,7 +37,7 @@ class signup extends Component {
             method: "POST",
             body: JSON.stringify({
                 name: this.state.name,
-                email: this.state.email,
+                number: this.state.number,
                 password: this.state.password
             })
         })
@@ -54,9 +54,9 @@ class signup extends Component {
             name: e.target.value
         })
     }
-    handleEmail =(e) =>{
+    handleNumber =(e) =>{
         this.setState({
-            email: e.target.value
+            number: e.target.value
         })
     }
     handlePassword =(e) =>{
@@ -70,6 +70,7 @@ class signup extends Component {
         })
     }
     render() {
+        console.log(this.state.number)
         return (
             <TabPane tabId="2">
                 <Row form>
@@ -84,9 +85,9 @@ class signup extends Component {
                 <Row>
                     <Col>
                         <FormGroup>
-                            <Label for="email" >Email</Label>
+                            <Label for="number" >number</Label>
                             <br />
-                            <Input type="email" id="email" name="email" placeholder="email123@gmail.com" onChange={this.handleEmail} value={this.state.email}></Input>
+                            <Input type="number" id="number" name="number" placeholder="098.." onChange={this.handleNumber} value={this.state.number}></Input>
                         </FormGroup>
                     </Col>
                 </Row>

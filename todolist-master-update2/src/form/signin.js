@@ -6,7 +6,7 @@ class signin extends Component {
         super(props);
         this.state = {
             signined: false,
-            email:"",
+            number:"",
             password:"",
             data:[],
             text:""
@@ -24,17 +24,17 @@ class signin extends Component {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email: this.state.email,          // hardcode mai lap cai lay email va password
+                number: this.state.number,          
                 password: this.state.password,
             })
         })
             .then(res => {
-                if (res.authentic) { //authentic ?
+                if (res.success) {// check xem co dung voi email va password k
                     this.props.Signin()
                     let path = "/";
                     this.props.history.push(path)
                 } else {
-                    throw Error("Please check your email or password")
+                    throw Error("Please check again your email or password")
                 }
             })
             .then(json =>{
@@ -44,9 +44,9 @@ class signin extends Component {
                 })
             })
     }
-    handleEmail =(e) =>{
+    handleNumber =(e) =>{
         this.setState({
-            email: e.target.value
+            number: e.target.value
         })
     }
     handlePassword =(e) =>{
@@ -56,14 +56,15 @@ class signin extends Component {
     }
     
     render() {
+        console.log(this.state.number)
         return (
             <TabPane tabId="1">
                 <Row form>
                     <Col>
                         <FormGroup>
-                            <Label for="email" >Email</Label>
+                            <Label for="number" >Number</Label>
                             <br />
-                            <Input type="email" id="email" name="email" placeholder="email123@gmail.com" onChange={this.handleEmail} value={this.state.value}></Input>
+                            <Input type="number" id="number" name="number" placeholder="098.." onChange={this.handleNumber} value={this.state.value}></Input>
                         </FormGroup>
                     </Col>
                 </Row>
